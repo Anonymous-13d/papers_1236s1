@@ -1,30 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modelOverview = document.getElementById('model-overview');
-    const liveInteraction = document.getElementById('live-interaction');
+function initWebGL() {
+    const canvas = document.getElementById('demoCanvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
-    modelOverview.innerHTML = '<p>Model overview visualization will be here.</p>';
-    liveInteraction.innerHTML = '<p>Live interaction demo will be here.</p>';
-
-    // Example of initializing WebGL context (placeholder)
-    function initWebGL(container) {
-        const canvas = document.createElement('canvas');
-        canvas.width = container.clientWidth;
-        canvas.height = container.clientHeight;
-        container.appendChild(canvas);
-
-        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-        if (!gl) {
-            alert('Unable to initialize WebGL. Your browser may not support it.');
-            return;
-        }
-
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);
-        gl.clear(gl.COLOR_BUFFER_BIT);
-
-        // Placeholder for actual WebGL content
+    if (!gl) {
+        alert('Unable to initialize WebGL. Your browser may not support it.');
+        return;
     }
 
-    // Initialize WebGL contexts for each demo section
-    initWebGL(modelOverview);
-    initWebGL(liveInteraction);
-});
+    // Set clear color to black, fully opaque
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    // Clear the color buffer with specified clear color
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    // TODO: Add your WebGL code here to create interactive demos
+}
+
+window.onload = initWebGL;
