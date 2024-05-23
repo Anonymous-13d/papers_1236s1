@@ -22,18 +22,19 @@
             document.body.appendChild(renderer.domElement);
 
             const loader = new THREE.GLTFLoader();
-            
+
             // Array of model filenames
-            const models = ['model1.glb', 'model2.glb', 'model3.glb', 'model4.glb'];
-            
+            const models = ['model1.glb', 'model2.glb', 'model3.glb'];
+
             // Load each model
             models.forEach((model, index) => {
                 loader.load(model, function (gltf) {
+                    console.log('Model loaded:', model);  // Debugging
                     // Position each model slightly differently
                     gltf.scene.position.x = index * 2 - (models.length - 1);
                     scene.add(gltf.scene);
                 }, undefined, function (error) {
-                    console.error('An error occurred loading the model:', error);
+                    console.error('An error occurred loading the model:', model, error);
                 });
             });
 
