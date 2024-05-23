@@ -22,10 +22,10 @@
             document.body.appendChild(renderer.domElement);
 
             const loader = new THREE.GLTFLoader();
-
+            
             // Array of model filenames
             const models = ['model1.glb', 'model2.glb', 'model3.glb'];
-
+            
             // Load each model
             models.forEach((model, index) => {
                 loader.load(model, function (gltf) {
